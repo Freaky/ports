@@ -42,4 +42,8 @@ PINENTRY_RUN_DEPENDS=	pinentry:${PORTSDIR}/security/pinentry
 XCLIP_RUN_DEPENDS=	xclip:${PORTSDIR}/x11/xclip
 XSEL_RUN_DEPENDS=	xsel:${PORTSDIR}/x11/xsel
 
+post-extract:
+	@${REINPLACE_CMD} -e 's/-Wno-language-extension-token//g' \
+		${WRKSRC}/Makefile
+
 .include <bsd.port.mk>
