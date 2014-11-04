@@ -1,5 +1,5 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD$
+# $FreeBSD: head/security/lastpass-cli/Makefile 372155 2014-11-04 17:11:05Z marino $
 
 PORTNAME=	lastpass-cli
 PORTVERSION=	0.3.0.20141031
@@ -26,11 +26,11 @@ GH_COMMIT=	8993a4e
 PLIST_FILES=	bin/lpass
 MAKE_ENV+=	MANDIR=${MANPREFIX}/man
 
-OPTIONS_DEFINE=	MANPAGES PINENTRY XCLIP XSEL
-PINENTRY_DESC=	Use pinentry for password entry
-XCLIP_DESC=	Use xclip for interacting with X11 clipboard
-XSEL_DESC=	Use xsel for interacting with X11 clipboard
-OPTIONS_DEFAULT=MANPAGES
+OPTIONS_DEFINE=		MANPAGES PINENTRY XCLIP XSEL
+OPTIONS_DEFAULT=	MANPAGES
+PINENTRY_DESC=		Use pinentry for password entry
+XCLIP_DESC=		Use xclip for interacting with X11 clipboard
+XSEL_DESC=		Use xsel for interacting with X11 clipboard
 
 MANPAGES_BUILD_DEPENDS=	asciidoc:${PORTSDIR}/textproc/asciidoc \
 			xmlto:${PORTSDIR}/textproc/xmlto
