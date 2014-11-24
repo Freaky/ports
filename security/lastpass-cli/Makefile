@@ -2,7 +2,7 @@
 # $FreeBSD: head/security/lastpass-cli/Makefile 372155 2014-11-04 17:11:05Z marino $
 
 PORTNAME=	lastpass-cli
-PORTVERSION=	0.3.0.20141031
+PORTVERSION=	0.4.0
 CATEGORIES=	security
 MASTER_SITES=	GH
 
@@ -21,7 +21,7 @@ USE_GITHUB=	YES
 GH_ACCOUNT=	lastpass
 GH_PROJECT=	lastpass-cli
 GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	8993a4e
+GH_COMMIT=	5c22997
 
 PLIST_FILES=	bin/lpass
 MAKE_ENV+=	MANDIR=${MANPREFIX}/man
