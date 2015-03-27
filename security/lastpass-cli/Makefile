@@ -1,10 +1,10 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/security/lastpass-cli/Makefile 372155 2014-11-04 17:11:05Z marino $
+# $FreeBSD: head/security/lastpass-cli/Makefile 381618 2015-03-19 16:44:57Z bdrewery $
 
 PORTNAME=	lastpass-cli
 PORTVERSION=	0.4.0
 CATEGORIES=	security
-MASTER_SITES=	GH
+MASTER_SITES=	GHL
 
 MAINTAINER=	tom@hur.st
 COMMENT=	LastPass command line interface tool
