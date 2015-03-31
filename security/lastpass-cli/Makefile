@@ -2,9 +2,9 @@
 # $FreeBSD: head/security/lastpass-cli/Makefile 381618 2015-03-19 16:44:57Z bdrewery $
 
 PORTNAME=	lastpass-cli
-PORTVERSION=	0.4.0
+PORTVERSION=	0.5.0
 CATEGORIES=	security
-MASTER_SITES=	GHL
+MASTER_SITES=	GH
 
 MAINTAINER=	tom@hur.st
 COMMENT=	LastPass command line interface tool
@@ -20,8 +20,7 @@ USE_OPENSSL=	yes
 USE_GITHUB=	YES
 GH_ACCOUNT=	lastpass
 GH_PROJECT=	lastpass-cli
-GH_TAGNAME=	${GH_COMMIT}
-GH_COMMIT=	5c22997
+GH_TAGNAME=	v0.5.0
 
 PLIST_FILES=	bin/lpass
 MAKE_ENV+=	MANDIR=${MANPREFIX}/man
