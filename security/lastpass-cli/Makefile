@@ -1,15 +1,15 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/security/lastpass-cli/Makefile 381618 2015-03-19 16:44:57Z bdrewery $
+# $FreeBSD: head/security/lastpass-cli/Makefile 383031 2015-04-02 17:42:19Z amdmi3 $
 
 PORTNAME=	lastpass-cli
 PORTVERSION=	0.5.0
 CATEGORIES=	security
-MASTER_SITES=	GH
 
 MAINTAINER=	tom@hur.st
 COMMENT=	LastPass command line interface tool
 
 LICENSE=	GPLv2
+LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:${PORTSDIR}/ftp/curl
 
@@ -20,7 +20,7 @@ USE_OPENSSL=	yes
 USE_GITHUB=	YES
 GH_ACCOUNT=	lastpass
 GH_PROJECT=	lastpass-cli
-GH_TAGNAME=	v0.5.0
+GH_TAGNAME=	v${PORTVERSION}
 
 PLIST_FILES=	bin/lpass
 MAKE_ENV+=	MANDIR=${MANPREFIX}/man
