@@ -17,7 +17,7 @@ GH_ACCOUNT=	tstack
 GH_TAGNAME=	v${PORTVERSION}
 
 GNU_CONFIGURE=	yes
-USES=		ncurses readline python
+USES=		execinfo ncurses readline python
 USE_SQLITE=	3
 
 PLIST_FILES=	bin/lnav man/man1/lnav.1.gz
