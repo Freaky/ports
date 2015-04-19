@@ -1,8 +1,8 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/sysutils/lnav/Makefile 383063 2015-04-02 20:18:50Z pawel $
+# $FreeBSD: head/sysutils/lnav/Makefile 384207 2015-04-18 06:03:59Z riggs $
 
 PORTNAME=	lnav
-PORTVERSION=	0.7.2
+PORTVERSION=	0.7.3
 CATEGORIES=	sysutils
 
 MAINTAINER=	tom@hur.st
@@ -17,7 +17,7 @@ GH_ACCOUNT=	tstack
 GH_TAGNAME=	v${PORTVERSION}
 
 GNU_CONFIGURE=	yes
-USES=		execinfo ncurses readline python
+USES=		autoreconf execinfo ncurses python readline
 USE_SQLITE=	3
 
 PLIST_FILES=	bin/lnav man/man1/lnav.1.gz
