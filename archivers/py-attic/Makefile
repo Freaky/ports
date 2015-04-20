@@ -4,8 +4,7 @@
 PORTNAME=	attic
 PORTVERSION=	0.15
 CATEGORIES=	archivers python
-MASTER_SITES=	https://pypi.python.org/packages/source/A/Attic/ \
-		http://devpi.net/root/pypi/+simple/Attic/
+MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
 DISTNAME=	Attic-${PORTVERSION}
 
