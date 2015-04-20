@@ -21,10 +21,16 @@ USES=		python:3.2+
 USE_PYTHON=	autoplist distutils
 USE_OPENSSL=	yes
 
+PYDISTUTILS_BUILDPATH=${BUILD_WRKSRC}/build/lib.${OPSYS:tl}-${UNAMER}-${ARCH}-${PYTHON_VER}
+
 .include <bsd.port.pre.mk>
 
 .if ${OSVERSION} < 1000000 && !defined(WITH_OPENSSL_PORT)
 IGNORE=		requires OpenSSL >= 1.0.0
 .endif
+
+regression-test: build
+	${SETENV} PYTHONPATH="${PYDISTUTILS_BUILDPATH}:${PYTHONPATH}" \
+	  ${PYTHON_CMD} -m attic.testsuite.run
 
 .include <bsd.port.post.mk>
