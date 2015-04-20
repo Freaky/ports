@@ -18,7 +18,7 @@ BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:${PORTSDIR}/devel/py-msgpa
 RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:${PORTSDIR}/devel/py-msgpack
 
 USES=		python:3.2+
-USE_PYTHON=	distutils autoplist
+USE_PYTHON=	autoplist distutils
 USE_OPENSSL=	yes
 
 .include <bsd.port.pre.mk>
