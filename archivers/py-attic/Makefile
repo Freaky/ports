@@ -25,8 +25,8 @@ PYDISTUTILS_BUILDPATH=${BUILD_WRKSRC}/build/lib.${OPSYS:tl}-${UNAMER}-${ARCH}-${
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 1000000 && !defined(WITH_OPENSSL_PORT)
-IGNORE=		requires OpenSSL >= 1.0.0
+.if ${OSVERSION} < 1000015
+RUN_DEPENDS+= openssl>=1.0:${PORTSDIR}/security/openssl
 .endif
 
 regression-test: build
