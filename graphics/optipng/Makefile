@@ -26,8 +26,8 @@ BUNDLED_ZLIB_CONFIGURE_OFF=	--with-system-zlib
 BUNDLED_ZLIB_CONFIGURE_ON=	--without-system-zlib
 
 USES=	gmake
-
 HAS_CONFIGURE=	yes
+
 PLIST_FILES=	bin/optipng man/man1/optipng.1.gz
 PORTDOCS=	history.txt optipng.man.html optipng.man.pdf optipng.man.txt \
 		png_optimization.html todo.txt
