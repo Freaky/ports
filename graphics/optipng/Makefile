@@ -1,5 +1,5 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/graphics/optipng/Makefile 357654 2014-06-13 07:36:27Z olgeni $
+# $FreeBSD: head/graphics/optipng/Makefile 384558 2015-04-23 11:11:11Z jbeich $
 
 PORTNAME=	optipng
 PORTVERSION=	0.7.5
