@@ -1,0 +1,312 @@
+.TH qgrep 1 "December 22, 2014" FreeBSD "User Manuals"
+.SH NAME
+.PP
+qgrep \- fast regular expression searcher with incrementally updated search index
+.SH SYNOPSIS
+.PP
+\fB\fCqgrep\fR init \fIPROJECT\fP \fIPATH\fP
+.PP
+\fB\fCqgrep\fR build \fIPROJECT\fP
+.PP
+\fB\fCqgrep\fR update \fIPROJECT\fP
+.PP
+\fB\fCqgrep\fR search \fIPROJECT\fP [ilbVC] [L\fINUMBER\fP] \fIPATTERN\fP
+.PP
+\fB\fCqgrep\fR files \fIPROJECTS\fP [\fIOPTIONS\fP \fIQUERY\fP]
+.SH DESCRIPTION
+.PP
+qgrep searches the named project for lines containing a match to a given pattern,
+using a pre\-built compressed search index to provide results faster than alternatives
+such as \fB\fCgrep\fR
+.SH OPTIONS
+.PP
+Search options are provided as space\-delimited lists following \fIPROJECT\fP:
+.TP
+\fB\fCi\fR
+case\-insensitive search
+.TP
+\fB\fCl\fR
+literal search (query is treated as a literal string)
+.TP
+\fB\fCb\fR
+bruteforce search: skip indexing optimizations (mainly for internal use)
+.TP
+\fB\fCV\fR
+Visual Studio style formatting: slashes are replaced with backslashes
+and line number is printed in parentheses
+.TP
+\fB\fCC\fR
+include column number in output
+.TP
+\fB\fCL*NUMBER*\fR
+limit output to \fINUMBER\fP lines
+.SH USAGE
+.PP
+First, initialize a project at a given location using the init command:
+.PP
+\fB\fCqgrep\fR init \fIPROJECT\fP \fIPATH\fP
+.PP
+This creates ~/.qgrep/\fIPROJECT\fP\&.cfg, which defines paths and file patterns to
+include in the index.  By default it only indexes files with a known language
+file extension.
+.PP
+When you are satisfied with the configuration, build the index:
+.PP
+\fB\fCqgrep\fR build \fIPROJECT\fP
+.PP
+Following this you can use the \fB\fCupdate\fR subcommand to index any changes to a given
+repository.  \fB\fCbuild\fR will always recreate an index from scratch.
+.PP
+You can now search the project using Perl\-compatible regular expressions:
+.PP
+\fB\fCqgrep\fR search \fIPROJECT\fP main\[rs]s*(
+.PP
+You may use \fB\fC*\fR as a project name to refer to all projects.  For example:
+.PP
+\fB\fCqgrep\fR build '*'
+.PP
+Will rebuild indexes for all configured projects.
+.SH FILES
+.PP
+\fB\fC~/.qgrep/*PROJECT*.cfg\fR
+.SH SEE ALSO
+.PP
+.BR grep (1), 
+.BR ack (1), 
+.BR ag (1)
+.SH Projects
+.PP
+Qgrep stores one database for each project, where project is a collection of
+text files. Projects are set up using configuration files, which normally live
+in ~/.qgrep folder (you can store projects in other folders, but you'll have to
+specify the full project path for all commands instead of project name).
+.PP
+Note: ~ on Windows means the home directory as set by HOME or HOMEPATH
+environment variables (usually it's the profile directory, C:\[rs]Users\[rs]UserName)
+.PP
+Each project consists of the configuration file with .cfg extension (this is a
+text file that specifies the set of files to be put into the database), and
+files with other extensions (i.e. .qgd, .qgf), that contain the database itself.
+.PP
+Projects have short names that are essentially relative paths from .qgrep folder
+without the extension \- i.e. project 'foo' corresponds to project configuration
+file ~/.qgrep/foo.cfg. Project names can be hierarchical \- i.e. foo/bar.
+.SH Project list
+.PP
+Most commands (except init) accept a project list. It is a comma\-separated list
+of items, where each item can be one of:
+.PP
+.RS
+.nf
+*     \- all projects in ~/.qgrep, including subprojects (hierarchical names)
+name  \- project with a specified name, i.e. mygame
+name/ \- all subprojects of the project name, i.e. foo/ includes foo/bar (but
+        does not include foo)
+path  \- full path to a project .cfg file for projects outside ~/.qgrep
+.fi
+.RE
+.PP
+For example:
+.PP
+.RS
+.nf
+mygame,mygame/art \- include ~/.qgrep/mygame.cfg and ~/.qgrep/mygame/art.cfg
+*,D:\\mygame\\source.cfg \- all projects in ~/.qgrep and D:\\mygame\\source.cfg
+.fi
+.RE
+.SH Project configuration file format
+.PP
+Project configuration files are line\-based text files, which specify a nested
+set of groups, where each group can have a set of file paths, a set of folder
+paths that are scanned hierarchically, and a set of include/exclude regular
+expressions, that are used to filter contents of path scanning. Here is a
+complete example with all available syntax:
+.PP
+.RS
+.nf
+include \\.(cpp|c|hpp|h)$
+# this is a comment
+group
+    path D:\\MyGame\\Thirdparty
+    include \\.(py|pl)$
+    exclude ^boost/
+endgroup
+group
+    path D:\\MyGame\\Sources
+    include \\.hlsl$
+endgroup
+file D:\\MyGame\\designdoc.txt
+# note how you can omit 'file'
+D:\\MyGame\\technicaldesigndoc.txt
+.fi
+.RE
+.PP
+In this example there are two groups in root group; one contains all files from
+Thirdparty folder that have one of cpp, c, hpp, h, py, pl extensions (note that
+for the file to be included, it has to match one of the include patterns
+specified in the current group or one of its ancestors) with the exception of
+the entire boost/ folder; the second group contains all files from Sources
+folder that have one of cpp, c, hpp, h, hlsl extensions. Also the root group
+contains two more files, designdoc.txt and technicaldesigndoc.txt.
+.PP
+Since you can omit 'file' prefix for single file names, a file list works as a
+valid project configuration file.
+.SH Building the project
+.PP
+Building the project is done with
+.PP
+.RS
+.nf
+qgrep build <project\-list>
+.fi
+.RE
+.PP
+This builds the project from scratch by reading the project configuration file
+for all specified projects, converting it to file list, then reads all files
+from disk and puts them to the database. For large projects, both reading the
+file list and reading the file contents takes a bit of time, so be patient.
+.PP
+There is an alternative command to build projects,
+.PP
+.RS
+.nf
+qgrep update <project\-list>
+.fi
+.RE
+.PP
+It works in the same way as build, but tries to reuse the information from the
+existing database (if available) to speed up building process. The update
+implementation relies on file metadata, and will incorrectly preserve the old
+contents if the file contents changed without changing the modification time or
+file size (however, this is extremely rare, so is probably not a big concern).
+.PP
+Remember that you can use * as a shorthand for all projects: `qgrep build *'
+builds everything.
+.SH Searching the project
+.PP
+The command for searching the project is:
+.PP
+.RS
+.nf
+qgrep search <project\-list> <search\-options> <query>
+.fi
+.RE
+.PP
+Query is a regular expression by default; you can use search options to change
+it to literal. Remember that query is the last argument \- you will need to quote
+it if your query needs to contain a space.
+.PP
+Search options do not have a specific prefix, and can be separated by spaces.
+These are the available search options:
+.PP
+.RS
+.nf
+i \- case\-insensitive search
+l \- literal search (query is treated as a literal string)
+b \- bruteforce search: skip indexing optimizations (mainly for internal use)
+V \- Visual Studio style formatting: slashes are replaced with backslashes
+    and line number is printed in parentheses
+C \- include column number in output
+Lnumber \- limit output to <number> lines
+.fi
+.RE
+.PP
+For example, this command uses case\-insensitive regex search with Visual Studio
+output formats (with column number included), limited to 100 results:
+.PP
+.RS
+.nf
+qgrep search * i VC L100 hello\\s+world
+.fi
+.RE
+.SH Searching for project files
+.PP
+Since the database contains file list in addition to file contents, qgrep can be
+used to search for files by paths or names. The command for that is:
+.PP
+.RS
+.nf
+qgrep files <project\-list> <search\-options> <query>
+.fi
+.RE
+.PP
+You can omit search options and query to get all files in the 
+.BR project (s).
+.PP
+Search options can contain all options that are used for regular searches
+(although not all options make sense for file searches); in addition, you can
+select a search style using the following options
+.PP
+.RS
+.nf
+fp \- search in file paths using a regular expression (unless l flag is used)
+     This option is the default.
+fn \- search in file names using a regular expression (unless l flag is used)
+fs \- search in file names/paths using a space\-delimited literal query
+     The query is a space\-delimited lists of literal components; if a component
+     contains a slash, it is used to filter files by path; otherwise it is used
+     to filter files by name. For example: 
+        render/ manager.c
+     matches with:
+        D:\\MyGame\\Source/render/lightmanager.cpp
+        D:\\MyGame\\Source/render/manager.c
+ft \- search in file paths using a Command\-T like fuzzy matching with ranking.
+     All letters from a query have to exist in the file path in the same order,
+     and the distance between letters in the match determines the score. For
+     example:
+        src/r/lmanager
+     matches with:
+        D:\\MyGame\\Source/render/lightmanager.cpp
+        D:\\MyGame\\Source/network/lobby/manager.cpp
+fT \- search in file paths using a Command\-T like fuzzy matching without ranking.
+.fi
+.RE
+.SH Feedback
+.PP
+You can report bugs, feature requests, submit patches and download new versions
+from qgrep site:
+.PP
+.RS
+.nf
+http://hg.zeuxcg.org/qgrep
+.fi
+.RE
+.PP
+Alternatively, you can contact the author using the e\-mail:
+.PP
+.RS
+.nf
+Arseny Kapoulkine <arseny.kapoulkine@gmail.com>
+.fi
+.RE
+.SH License
+.PP
+qgrep is distributed under the BSD license:
+.PP
+Copyright (c) 2011\-2014, Arseny Kapoulkine
+.PP
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are
+met:
+.RS
+.IP \(bu 2
+Redistributions of source code must retain the above copyright
+notice, this list of conditions and the following disclaimer.
+.IP \(bu 2
+Redistributions in binary form must reproduce the above
+copyright notice, this list of conditions and the following disclaimer
+in the documentation and/or other materials provided with the
+distribution.
+.RE
+.PP
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+"AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
