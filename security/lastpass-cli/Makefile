@@ -1,8 +1,9 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/security/lastpass-cli/Makefile 383031 2015-04-02 17:42:19Z amdmi3 $
+# $FreeBSD: head/security/lastpass-cli/Makefile 387986 2015-05-30 21:25:06Z mat $
 
 PORTNAME=	lastpass-cli
 PORTVERSION=	0.5.1
+DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 
 MAINTAINER=	tom@hur.st
@@ -19,8 +20,6 @@ USE_OPENSSL=	yes
 
 USE_GITHUB=	YES
 GH_ACCOUNT=	lastpass
-GH_PROJECT=	lastpass-cli
-GH_TAGNAME=	v${PORTVERSION}
 
 PLIST_FILES=	bin/lpass
 MAKE_ENV+=	MANDIR=${MANPREFIX}/man
