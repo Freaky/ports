@@ -1,0 +1,4 @@
+jdupes is a program for identifying and taking actions upon duplicate
+files.  It is a fork of fdupes, but not a drop-in replacement.
+
+WWW: https://github.com/jbruchon/jdupes
