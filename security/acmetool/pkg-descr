@@ -1,5 +1,0 @@
-acmetool is an easy-to-use command line tool for automatically acquiring
-certificates from ACME servers (such as Let's Encrypt). Designed to flexibly
-integrate into your webserver setup to enable automatic verification.
-
-WWW: https://hlandau.github.io/acme/
