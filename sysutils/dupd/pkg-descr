@@ -1,3 +1,6 @@
-dupd is a file duplicate detection CLI utility.
+dupd is a file duplicate detection CLI utility, supporting iterative
+interactive use with a persistant file database.
+
+Despite the name, it doesn't run as a daemon.
 
 WWW: http://www.virkki.com/dupd/
