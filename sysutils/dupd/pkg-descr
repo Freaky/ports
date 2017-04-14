@@ -1,5 +1,5 @@
 dupd is a file duplicate detection CLI utility, supporting iterative
-interactive use with a persistant file database.
+interactive use with a persistent file database.
 
 Despite the name, it doesn't run as a daemon.
 
