@@ -1,8 +1,9 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/sysutils/lnav/Makefile 384207 2015-04-18 06:03:59Z riggs $
+# $FreeBSD: head/sysutils/lnav/Makefile 430235 2017-01-01 03:45:12Z sunpoet $
 
 PORTNAME=	lnav
-PORTVERSION=	0.7.3
+PORTVERSION=	0.8.2
+DISTVERSIONPREFIX=	v
 CATEGORIES=	sysutils
 
 MAINTAINER=	tom@hur.st
@@ -10,16 +11,27 @@ COMMENT=	Terminal based log file navigator
 
 LICENSE=	BSD2CLAUSE
 
-BUILD_DEPENDS=	${LOCALBASE}/lib/libpcre.a:${PORTSDIR}/devel/pcre
+LIB_DEPENDS=	libpcrecpp.so:devel/pcre \
+		libcurl.so:ftp/curl
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tstack
-GH_TAGNAME=	v${PORTVERSION}
 
+USES=		autoreconf compiler:c++14-lang execinfo gmake ncurses sqlite readline
 GNU_CONFIGURE=	yes
-USES=		autoreconf execinfo ncurses python readline
-USE_SQLITE=	3
+CONFIGURE_ARGS=	--disable-static
 
 PLIST_FILES=	bin/lnav man/man1/lnav.1.gz
+
+OPTIONS_DEFINE=	CURL
+OPTIONS_DEFAULT=CURL
+CURL_DESC=	Use libcurl for remote log file support
+
+CURL_LIB_DEPENDS=	libcurl.so:ftp/curl
+CURL_CONFIGURE_WITH=	libcurl
+
+do-install:
+	${INSTALL_PROGRAM} ${WRKSRC}/src/lnav ${STAGEDIR}${PREFIX}/bin
+	${INSTALL_MAN} ${WRKSRC}/lnav.1 ${STAGEDIR}${MAN1PREFIX}/man/man1
 
 .include <bsd.port.mk>
