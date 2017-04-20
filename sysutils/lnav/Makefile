@@ -11,8 +11,7 @@ COMMENT=	Terminal based log file navigator
 
 LICENSE=	BSD2CLAUSE
 
-LIB_DEPENDS=	libpcrecpp.so:devel/pcre \
-		libcurl.so:ftp/curl
+LIB_DEPENDS=	libpcrecpp.so:devel/pcre
 
 USE_GITHUB=	yes
 GH_ACCOUNT=	tstack
