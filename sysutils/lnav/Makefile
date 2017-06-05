@@ -24,8 +24,8 @@ PLIST_FILES=	bin/lnav man/man1/lnav.1.gz
 
 OPTIONS_DEFINE=	CURL
 OPTIONS_DEFAULT=CURL
-
 CURL_DESC=	Use libcurl for remote log file support
+
 CURL_LIB_DEPENDS=	libcurl.so:ftp/curl
 CURL_CONFIGURE_WITH=	libcurl
 

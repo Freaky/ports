@@ -5,7 +5,7 @@
  ** result.  Otherwise, we have an (illegal) overlong encoding.
  */
 -static const long utf_mask[] = {
-+static const unsigned int utf_mask[] = {
++static const unsigned long utf_mask[] = {
    0x00000000,
    0xffffff80,
    0xfffff800,
