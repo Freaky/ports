@@ -1,8 +1,8 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: $
+# $FreeBSD: head/archivers/py-attic/Makefile 442592 2017-06-04 21:49:48Z bdrewery $
 
 PORTNAME=	attic
-PORTVERSION=	0.15
+PORTVERSION=	0.16
 CATEGORIES=	archivers python
 MASTER_SITES=	CHEESESHOP
 PKGNAMEPREFIX=	${PYTHON_PKGNAMEPREFIX}
@@ -14,20 +14,20 @@ COMMENT=	Deduplicating backup program
 LICENSE=	BSD3CLAUSE
 LICENSE_FILE=	${WRKSRC}/LICENSE
 
-BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:${PORTSDIR}/devel/py-msgpack
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack>=0.1.10:${PORTSDIR}/devel/py-msgpack
+BUILD_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.1.10:devel/py-msgpack-python
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}msgpack-python>=0.1.10:devel/py-msgpack-python
 
-USES=		python:3.2+
+USES=		python:3.3+ ssl
 USE_PYTHON=	autoplist distutils
-USE_OPENSSL=	yes
 
 STRIP_FILES=	hashindex.so platform_freebsd.so chunker.so crypto.so
 PYDISTUTILS_BUILDPATH=${BUILD_WRKSRC}/build/lib.${OPSYS:tl}-${UNAMER}-${ARCH}-${PYTHON_VER}
 
 .include <bsd.port.pre.mk>
 
-.if ${OSVERSION} < 1000015
-RUN_DEPENDS+= openssl>=1.0:${PORTSDIR}/security/openssl
+.if defined(PACKAGE_BUILDING) && !defined(PACKAGE_BUILDING_FLAVORS) && \
+    ${PYTHON_VER} != ${PYTHON_DEFAULT}
+IGNORE=	you have python ${PYTHON_DEFAULT} set as the default, and this needs ${PYTHON_VER}
 .endif
 
 regression-test: build
