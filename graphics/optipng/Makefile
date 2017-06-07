@@ -1,8 +1,8 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/graphics/optipng/Makefile 384558 2015-04-23 11:11:11Z jbeich $
+# $FreeBSD: head/graphics/optipng/Makefile 434254 2017-02-16 21:24:21Z madpilot $
 
 PORTNAME=	optipng
-PORTVERSION=	0.7.5
+PORTVERSION=	0.7.6
 CATEGORIES=	graphics
 MASTER_SITES=	SF/${PORTNAME}/OptiPNG/${PORTNAME}-${PORTVERSION}
 
@@ -17,9 +17,8 @@ OPTIONS_DEFINE=	BUNDLED_LIBPNG BUNDLED_ZLIB
 BUNDLED_LIBPNG_DESC=		Use bundled libpng
 BUNDLED_LIBPNG_CONFIGURE_OFF=	--with-system-libpng
 BUNDLED_LIBPNG_CONFIGURE_ON=	--without-system-libpng
-BUNDLED_LIBPNG_LIB_DEPENDS_OFF=	libpng.so:${PORTSDIR}/graphics/png
-BUNDLED_LIBPNG_CFLAGS_OFF=	-I${LOCALBASE}/include
-BUNDLED_LIBPNG_LDFLAGS_OFF=	-L${LOCALBASE}/lib
+BUNDLED_LIBPNG_LIB_DEPENDS_OFF=	libpng.so:graphics/png
+BUNDLED_LIBPNG_USES_OFF=	localbase:ldflags
 
 BUNDLED_ZLIB_DESC=		Use bundled zlib
 BUNDLED_ZLIB_CONFIGURE_OFF=	--with-system-zlib
@@ -36,7 +35,6 @@ do-install:
 	${INSTALL_PROGRAM} ${WRKSRC}/src/optipng/optipng ${STAGEDIR}${PREFIX}/bin/
 	${INSTALL_MAN} ${WRKSRC}/src/optipng/man/optipng.1 ${STAGEDIR}${MAN1PREFIX}/man/man1/
 
-post-install:
 	${INSTALL} -d ${STAGEDIR}${DOCSDIR}
 	${INSTALL_DATA} ${PORTDOCS:S,^,${WRKSRC}/doc/,} ${STAGEDIR}${DOCSDIR}/
 
