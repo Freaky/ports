@@ -1,5 +1,5 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/x11/terminator/Makefile 371203 2014-10-19 18:16:15Z mva $
+# $FreeBSD: head/x11/terminator/Makefile 415742 2016-05-23 20:35:01Z amdmi3 $
 
 PORTNAME=	terminator
 PORTVERSION=	0.97
@@ -12,19 +12,19 @@ COMMENT=	Multiple GNOME terminals in one window
 
 LICENSE=	GPLv2
 
-RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify>=0:${PORTSDIR}/devel/py-notify \
-		${PYTHON_SITELIBDIR}/keybinder/_keybinder.so:${PORTSDIR}/x11/keybinder \
-		${PYTHON_PKGNAMEPREFIX}vte>=0:${PORTSDIR}/x11-toolkits/py-vte
+RUN_DEPENDS=	${PYTHON_PKGNAMEPREFIX}notify>=0:devel/py-notify \
+		${PYTHON_SITELIBDIR}/keybinder/_keybinder.so:x11/keybinder \
+		${PYTHON_PKGNAMEPREFIX}vte>=0:x11-toolkits/py-vte
 
 USES=		python
-USE=		GNOME=pygtk2
+USE_GNOME=	pygtk2 intltool
 USE_PYTHON=	distutils
 PYDISTUTILS_PKGNAME=	Terminator
 
 INSTALLS_ICONS=	yes
 
 OPTIONS_DEFINE=		NLS GCONF
-OPTIONS_DEFAULT=	NLS GCONF
+OPTIONS_DEFAULT=	GCONF
 OPTIONS_SUB=		yes
 GCONF_DESC=		Use GNOME Terminal settings
 GCONF_USE=		GNOME=pygnome2
