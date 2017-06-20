@@ -23,6 +23,8 @@ GH_ACCOUNT=	lastpass
 PLIST_FILES=	bin/lpass share/bash-completion/completions/lpass
 CMAKE_ARGS=	-DBASH_COMPLETION_COMPLETIONSDIR=${PREFIX}/share/bash-completion/completions
 
+TEST_TARGET=	lpass-test test
+
 OPTIONS_DEFINE=		MANPAGES PINENTRY XCLIP XSEL
 OPTIONS_DEFAULT=	MANPAGES
 PINENTRY_DESC=		Use pinentry for password entry
@@ -42,6 +44,8 @@ XSEL_RUN_DEPENDS=	xsel:x11/xsel
 post-extract:
 	@${REINPLACE_CMD} -e 's/-Wno-language-extension-token//g' \
 		${WRKSRC}/CMakeLists.txt
+	@${REINPLACE_CMD} -e 's/build\/lpass-test/lpass-test/' \
+		${WRKSRC}/test/include.sh
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/lpass
