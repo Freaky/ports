@@ -2,7 +2,7 @@
 # $FreeBSD: head/security/lastpass-cli/Makefile 433971 2017-02-13 00:15:15Z adamw $
 
 PORTNAME=	lastpass-cli
-PORTVERSION=	1.2.0
+PORTVERSION=	1.2.1
 DISTVERSIONPREFIX=	v
 CATEGORIES=	security
 
