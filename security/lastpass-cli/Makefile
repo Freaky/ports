@@ -14,7 +14,7 @@ LICENSE_FILE=	${WRKSRC}/COPYING
 
 LIB_DEPENDS=	libcurl.so:ftp/curl
 
-USES=		cmake pkgconfig ssl
+USES=		cmake:noninja pkgconfig ssl
 USE_GNOME=	libxml2
 
 USE_GITHUB=	YES
