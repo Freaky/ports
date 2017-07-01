@@ -1,5 +1,5 @@
 # Created by: Thomas Hurst <tom@hur.st>
-# $FreeBSD: head/security/lastpass-cli/Makefile 433971 2017-02-13 00:15:15Z adamw $
+# $FreeBSD: head/security/lastpass-cli/Makefile 444808 2017-06-30 22:15:08Z sunpoet $
 
 PORTNAME=	lastpass-cli
 PORTVERSION=	1.2.1
