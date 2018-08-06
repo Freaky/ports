@@ -297,6 +297,7 @@ CARGO_CRATES=	actix-0.7.3 \
 		xml-rs-0.7.0 \
 		yaml-rust-0.4.0
 
+# Workaround for #230413
 MASTER_SITES+=	${MASTER_SITES_CRATESIO}/utf-8/0.7.4/download?dummy=/:cargo_utf8074
 DISTFILES+=	${CARGO_DIST_SUBDIR}/utf-8-0.7.4.tar.gz:cargo_utf8074
 
