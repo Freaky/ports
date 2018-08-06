@@ -1,0 +1,5 @@
+Find running programs that need restarting after an upgrade, files left
+behind by the package system, binaries linking to obsolete libraries,
+and packages no longer available in any repositories.
+
+WWW: http://github.com/Freaky/pkg-cruft
