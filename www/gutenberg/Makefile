@@ -276,6 +276,7 @@ CARGO_CRATES=	actix-0.7.3 \
 		unidecode-0.3.0 \
 		unreachable-1.0.0 \
 		url-1.7.1 \
+		utf-8-0.7.4 \
 		utf8-ranges-1.0.0 \
 		uuid-0.6.5 \
 		vcpkg-0.2.4 \
@@ -297,19 +298,7 @@ CARGO_CRATES=	actix-0.7.3 \
 		xml-rs-0.7.0 \
 		yaml-rust-0.4.0
 
-# Workaround for #230413
-MASTER_SITES+=	${MASTER_SITES_CRATESIO}/utf-8/0.7.4/download?dummy=/:cargo_utf8074
-DISTFILES+=	${CARGO_DIST_SUBDIR}/utf-8-0.7.4.tar.gz:cargo_utf8074
-
 PLIST_FILES=	bin/gutenberg
-
-post-extract:
-.for _crate in utf-8-0.7.4
-	@${MV} ${WRKDIR}/${_crate} ${CARGO_VENDOR_DIR}/${_crate}
-	@${PRINTF} '{"package":"%s","files":{}}' \
-		$$(${SHA256} -q ${DISTDIR}/${CARGO_DIST_SUBDIR}/${_crate}.tar.gz) \
-		> ${CARGO_VENDOR_DIR}/${_crate}/.cargo-checksum.json
-.endfor
 
 post-install:
 	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/gutenberg

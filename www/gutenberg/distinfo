@@ -1,6 +1,4 @@
-TIMESTAMP = 1533579805
-SHA256 (rust/crates/utf-8-0.7.4.tar.gz) = bab35f71693630bb1953dce0f2bcd780e7cde025027124a202ac08a45ba25141
-SIZE (rust/crates/utf-8-0.7.4.tar.gz) = 6136
+TIMESTAMP = 1533591910
 SHA256 (rust/crates/actix-0.7.3.tar.gz) = 0470f5163ac229ed0329f6abbd6f775591b06ec5ecbf2f2589c16ab8bd6f76b8
 SIZE (rust/crates/actix-0.7.3.tar.gz) = 65687
 SHA256 (rust/crates/actix-web-0.7.3.tar.gz) = 79d66c9405feacf1ee8fc3cff25725270724be376e433fbd17c099c93156395f
@@ -523,6 +521,8 @@ SHA256 (rust/crates/unreachable-1.0.0.tar.gz) = 382810877fe448991dfc7f0dd6e3ae5d
 SIZE (rust/crates/unreachable-1.0.0.tar.gz) = 6355
 SHA256 (rust/crates/url-1.7.1.tar.gz) = 2a321979c09843d272956e73700d12c4e7d3d92b2ee112b31548aef0d4efc5a6
 SIZE (rust/crates/url-1.7.1.tar.gz) = 68266
+SHA256 (rust/crates/utf-8-0.7.4.tar.gz) = bab35f71693630bb1953dce0f2bcd780e7cde025027124a202ac08a45ba25141
+SIZE (rust/crates/utf-8-0.7.4.tar.gz) = 6136
 SHA256 (rust/crates/utf8-ranges-1.0.0.tar.gz) = 662fab6525a98beff2921d7f61a39e7d59e0b425ebc7d0d9e66d316e55124122
 SIZE (rust/crates/utf8-ranges-1.0.0.tar.gz) = 8599
 SHA256 (rust/crates/uuid-0.6.5.tar.gz) = e1436e58182935dcd9ce0add9ea0b558e8a87befe01c1a301e6020aeb0876363
