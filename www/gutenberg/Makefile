@@ -2,6 +2,7 @@
 
 PORTNAME=	gutenberg
 PORTVERSION=	0.4.1
+DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 
 MAINTAINER=	tom@hur.st
@@ -13,7 +14,6 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	Keats
-GH_TAGNAME=	abd9c26d810f9ffa8c7923723c91ce8be5eed761
 
 CARGO_CRATES=	actix-0.7.3 \
 		actix-web-0.7.3 \
