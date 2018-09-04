@@ -1,7 +1,7 @@
 # $FreeBSD$
 
 PORTNAME=	gutenberg
-PORTVERSION=	0.4.1
+PORTVERSION=	0.4.2
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 
@@ -15,32 +15,30 @@ USES=		cargo
 USE_GITHUB=	yes
 GH_ACCOUNT=	Keats
 
-CARGO_CRATES=	actix-0.7.3 \
-		actix-web-0.7.3 \
+CARGO_CRATES=	actix-0.7.4 \
+		actix-web-0.7.4 \
 		actix_derive-0.3.0 \
 		adler32-1.0.3 \
-		aho-corasick-0.6.6 \
+		aho-corasick-0.6.8 \
 		ammonia-1.2.0 \
 		ansi_term-0.11.0 \
 		arrayvec-0.4.7 \
 		atty-0.2.11 \
 		backtrace-0.2.3 \
 		backtrace-0.3.9 \
-		backtrace-sys-0.1.23 \
+		backtrace-sys-0.1.24 \
 		base64-0.8.0 \
 		base64-0.9.2 \
 		bincode-1.0.1 \
-		bitflags-0.4.0 \
 		bitflags-0.7.0 \
 		bitflags-0.9.1 \
-		bitflags-1.0.3 \
+		bitflags-1.0.4 \
 		build_const-0.2.1 \
-		byteorder-1.2.4 \
-		bytes-0.3.0 \
+		byteorder-1.2.6 \
 		bytes-0.4.9 \
-		cc-1.0.18 \
-		cfg-if-0.1.4 \
-		chrono-0.4.5 \
+		cc-1.0.23 \
+		cfg-if-0.1.5 \
+		chrono-0.4.6 \
 		clap-2.32.0 \
 		cloudabi-0.0.3 \
 		color_quant-1.0.1 \
@@ -50,12 +48,10 @@ CARGO_CRATES=	actix-0.7.3 \
 		crc-1.8.1 \
 		crossbeam-channel-0.2.4 \
 		crossbeam-deque-0.2.0 \
-		crossbeam-deque-0.3.1 \
+		crossbeam-deque-0.6.1 \
 		crossbeam-epoch-0.3.1 \
-		crossbeam-epoch-0.4.3 \
 		crossbeam-epoch-0.5.2 \
 		crossbeam-utils-0.2.2 \
-		crossbeam-utils-0.3.2 \
 		crossbeam-utils-0.5.0 \
 		ctrlc-3.1.1 \
 		dbghelp-sys-0.2.0 \
@@ -70,13 +66,13 @@ CARGO_CRATES=	actix-0.7.3 \
 		encoding-index-singlebyte-1.20141219.5 \
 		encoding-index-tradchinese-1.20141219.5 \
 		encoding_index_tests-0.1.4 \
-		encoding_rs-0.7.2 \
+		encoding_rs-0.8.6 \
 		error-chain-0.1.12 \
 		error-chain-0.12.0 \
 		error-chain-0.8.1 \
 		failure-0.1.2 \
 		failure_derive-0.1.2 \
-		filetime-0.1.15 \
+		filetime-0.2.1 \
 		flate2-1.0.2 \
 		fnv-1.0.6 \
 		foreign-types-0.3.2 \
@@ -93,11 +89,11 @@ CARGO_CRATES=	actix-0.7.3 \
 		gif-0.10.0 \
 		glob-0.2.11 \
 		globset-0.4.1 \
-		h2-0.1.11 \
+		h2-0.1.12 \
 		hostname-0.1.5 \
 		html5ever-0.22.3 \
 		htmlescape-0.3.1 \
-		http-0.1.8 \
+		http-0.1.10 \
 		httparse-1.3.2 \
 		humansize-1.1.0 \
 		hyper-0.11.27 \
@@ -106,9 +102,10 @@ CARGO_CRATES=	actix-0.7.3 \
 		image-0.19.0 \
 		indexmap-1.0.1 \
 		inflate-0.4.3 \
-		inotify-0.3.0 \
+		inotify-0.6.1 \
+		inotify-sys-0.1.3 \
 		iovec-0.1.2 \
-		ipconfig-0.1.6 \
+		ipconfig-0.1.7 \
 		itoa-0.4.2 \
 		jpeg-decoder-0.1.15 \
 		kernel32-sys-0.2.2 \
@@ -117,36 +114,33 @@ CARGO_CRATES=	actix-0.7.3 \
 		lazy_static-1.1.0 \
 		lazycell-0.6.0 \
 		lazycell-1.0.0 \
-		libc-0.2.42 \
+		libc-0.2.43 \
 		libflate-0.1.16 \
 		linked-hash-map-0.4.2 \
 		linked-hash-map-0.5.1 \
 		lock_api-0.1.3 \
-		log-0.3.9 \
-		log-0.4.3 \
+		log-0.4.4 \
 		lru-cache-0.1.1 \
 		lzw-0.10.0 \
 		mac-0.1.1 \
 		maplit-1.0.1 \
 		markup5ever-0.7.2 \
-		matches-0.1.7 \
-		memchr-2.0.1 \
+		matches-0.1.8 \
+		memchr-2.0.2 \
 		memoffset-0.2.1 \
-		mime-0.3.8 \
+		mime-0.3.9 \
 		mime_guess-2.0.0-alpha.6 \
 		miniz-sys-0.1.10 \
-		mio-0.5.1 \
 		mio-0.6.15 \
+		mio-extras-2.0.5 \
 		mio-uds-0.6.6 \
-		miow-0.1.5 \
 		miow-0.2.1 \
 		native-tls-0.1.5 \
 		net2-0.2.33 \
 		new_debug_unreachable-1.0.1 \
 		nix-0.11.0 \
-		nix-0.5.1 \
 		nodrop-0.1.12 \
-		notify-4.0.4 \
+		notify-4.0.6 \
 		num-derive-0.2.2 \
 		num-integer-0.1.39 \
 		num-iter-0.1.37 \
@@ -158,44 +152,45 @@ CARGO_CRATES=	actix-0.7.3 \
 		openssl-0.9.24 \
 		openssl-sys-0.9.35 \
 		owning_ref-0.3.3 \
-		parking_lot-0.6.3 \
-		parking_lot_core-0.2.14 \
+		parking_lot-0.6.4 \
+		parking_lot_core-0.3.0 \
 		percent-encoding-1.0.1 \
 		pest-1.0.6 \
-		pest_derive-1.0.7 \
-		phf-0.7.22 \
-		phf_codegen-0.7.22 \
-		phf_generator-0.7.22 \
-		phf_shared-0.7.22 \
-		pkg-config-0.3.12 \
+		pest_derive-1.0.8 \
+		phf-0.7.23 \
+		phf_codegen-0.7.23 \
+		phf_generator-0.7.23 \
+		phf_shared-0.7.23 \
+		pkg-config-0.3.14 \
 		plist-0.2.4 \
 		png-0.12.0 \
 		precomputed-hash-0.1.1 \
 		proc-macro2-0.3.8 \
-		proc-macro2-0.4.9 \
+		proc-macro2-0.4.16 \
 		pulldown-cmark-0.1.2 \
 		quick-error-1.2.2 \
 		quote-0.3.15 \
 		quote-0.5.2 \
-		quote-0.6.5 \
-		rand-0.4.2 \
-		rand-0.5.4 \
+		quote-0.6.8 \
+		rand-0.4.3 \
+		rand-0.5.5 \
 		rand_core-0.2.1 \
 		rayon-1.0.2 \
 		rayon-core-1.4.1 \
 		redox_syscall-0.1.40 \
 		redox_termios-0.1.1 \
-		regex-1.0.2 \
+		regex-1.0.4 \
 		regex-syntax-0.4.2 \
 		regex-syntax-0.6.2 \
 		relay-0.1.1 \
 		remove_dir_all-0.5.1 \
-		reqwest-0.8.7 \
+		reqwest-0.8.8 \
 		resolv-conf-0.6.1 \
 		rust-stemmers-1.0.2 \
 		rustc-demangle-0.1.9 \
+		ryu-0.2.6 \
 		safemem-0.2.0 \
-		same-file-1.0.2 \
+		same-file-1.0.3 \
 		sass-rs-0.2.1 \
 		sass-sys-0.4.7 \
 		schannel-0.1.13 \
@@ -204,18 +199,16 @@ CARGO_CRATES=	actix-0.7.3 \
 		scopeguard-0.3.3 \
 		security-framework-0.1.16 \
 		security-framework-sys-0.1.16 \
-		serde-1.0.70 \
-		serde_derive-1.0.70 \
-		serde_json-1.0.24 \
-		serde_urlencoded-0.5.2 \
+		serde-1.0.76 \
+		serde_derive-1.0.76 \
+		serde_json-1.0.26 \
+		serde_urlencoded-0.5.3 \
 		sha1-0.6.0 \
 		siphasher-0.2.3 \
-		slab-0.1.3 \
-		slab-0.3.0 \
 		slab-0.4.1 \
 		slug-0.1.3 \
-		smallvec-0.6.3 \
-		socket2-0.3.7 \
+		smallvec-0.6.5 \
+		socket2-0.3.8 \
 		stable_deref_trait-1.1.1 \
 		string-0.1.1 \
 		string_cache-0.7.3 \
@@ -226,34 +219,36 @@ CARGO_CRATES=	actix-0.7.3 \
 		strum_macros-0.9.1 \
 		syn-0.11.11 \
 		syn-0.13.11 \
-		syn-0.14.7 \
+		syn-0.14.9 \
 		synom-0.11.3 \
 		synstructure-0.9.0 \
 		syntect-2.1.0 \
 		tempdir-0.3.7 \
 		tempfile-3.0.3 \
 		tendril-0.4.0 \
-		tera-0.11.12 \
+		tera-0.11.14 \
 		term-0.4.6 \
 		term-painter-0.2.4 \
 		termion-1.5.1 \
 		textwrap-0.10.0 \
-		thread_local-0.3.5 \
+		thread_local-0.3.6 \
 		time-0.1.40 \
-		tokio-0.1.7 \
+		tokio-0.1.8 \
 		tokio-codec-0.1.0 \
 		tokio-core-0.1.17 \
-		tokio-executor-0.1.2 \
-		tokio-fs-0.1.2 \
-		tokio-io-0.1.7 \
-		tokio-reactor-0.1.2 \
+		tokio-current-thread-0.1.1 \
+		tokio-executor-0.1.4 \
+		tokio-fs-0.1.3 \
+		tokio-io-0.1.8 \
+		tokio-reactor-0.1.5 \
 		tokio-service-0.1.0 \
-		tokio-signal-0.2.1 \
-		tokio-tcp-0.1.0 \
-		tokio-threadpool-0.1.5 \
-		tokio-timer-0.2.4 \
+		tokio-signal-0.2.5 \
+		tokio-tcp-0.1.1 \
+		tokio-threadpool-0.1.6 \
+		tokio-timer-0.2.6 \
 		tokio-tls-0.1.4 \
-		tokio-udp-0.1.1 \
+		tokio-udp-0.1.2 \
+		tokio-uds-0.2.1 \
 		toml-0.4.6 \
 		trust-dns-proto-0.4.0 \
 		trust-dns-resolver-0.9.1 \
@@ -277,23 +272,24 @@ CARGO_CRATES=	actix-0.7.3 \
 		unreachable-1.0.0 \
 		url-1.7.1 \
 		utf-8-0.7.4 \
-		utf8-ranges-1.0.0 \
+		utf8-ranges-1.0.1 \
 		uuid-0.6.5 \
-		vcpkg-0.2.4 \
+		vcpkg-0.2.6 \
 		vec_map-0.8.1 \
 		version_check-0.1.4 \
 		void-1.0.2 \
-		walkdir-2.2.0 \
+		walkdir-2.2.5 \
 		want-0.0.4 \
 		widestring-0.2.2 \
 		winapi-0.2.8 \
 		winapi-0.3.5 \
 		winapi-build-0.1.1 \
 		winapi-i686-pc-windows-gnu-0.4.0 \
+		winapi-util-0.1.1 \
 		winapi-x86_64-pc-windows-gnu-0.4.0 \
 		winreg-0.5.1 \
 		winutil-0.1.1 \
-		ws-0.7.6 \
+		ws-0.7.8 \
 		ws2_32-sys-0.2.1 \
 		xml-rs-0.7.0 \
 		yaml-rust-0.4.0
