@@ -1,7 +1,7 @@
 # $FreeBSD$
 
-PORTNAME=	gutenberg
-PORTVERSION=	0.4.2
+PORTNAME=	zola
+PORTVERSION=	0.5.0
 DISTVERSIONPREFIX=	v
 CATEGORIES=	www
 
@@ -13,52 +13,60 @@ LICENSE_FILE=	${WRKSRC}/LICENSE
 
 USES=		cargo
 USE_GITHUB=	yes
-GH_ACCOUNT=	Keats
+GH_ACCOUNT=	getzola
 
-CARGO_CRATES=	actix-0.7.4 \
-		actix-web-0.7.4 \
-		actix_derive-0.3.0 \
+CARGO_CRATES=	actix-0.7.6 \
+		actix-net-0.2.2 \
+		actix-web-0.7.14 \
+		actix_derive-0.3.2 \
 		adler32-1.0.3 \
-		aho-corasick-0.6.8 \
+		aho-corasick-0.6.9 \
 		ammonia-1.2.0 \
 		ansi_term-0.11.0 \
+		arc-swap-0.3.5 \
+		arrayref-0.3.5 \
 		arrayvec-0.4.7 \
+		askama_escape-0.1.0 \
 		atty-0.2.11 \
-		backtrace-0.2.3 \
 		backtrace-0.3.9 \
 		backtrace-sys-0.1.24 \
-		base64-0.8.0 \
-		base64-0.9.2 \
+		base64-0.10.0 \
+		base64-0.9.3 \
 		bincode-1.0.1 \
 		bitflags-0.7.0 \
-		bitflags-0.9.1 \
 		bitflags-1.0.4 \
+		block-buffer-0.3.3 \
 		build_const-0.2.1 \
-		byteorder-1.2.6 \
-		bytes-0.4.9 \
-		cc-1.0.23 \
-		cfg-if-0.1.5 \
+		byte-tools-0.2.0 \
+		byteorder-1.2.7 \
+		bytes-0.4.10 \
+		cc-1.0.25 \
+		cfg-if-0.1.6 \
 		chrono-0.4.6 \
 		clap-2.32.0 \
 		cloudabi-0.0.3 \
 		color_quant-1.0.1 \
 		cookie-0.11.0 \
-		core-foundation-0.2.3 \
-		core-foundation-sys-0.2.3 \
+		core-foundation-0.5.1 \
+		core-foundation-sys-0.5.1 \
 		crc-1.8.1 \
-		crossbeam-channel-0.2.4 \
+		crossbeam-channel-0.2.6 \
 		crossbeam-deque-0.2.0 \
-		crossbeam-deque-0.6.1 \
+		crossbeam-deque-0.6.2 \
 		crossbeam-epoch-0.3.1 \
-		crossbeam-epoch-0.5.2 \
+		crossbeam-epoch-0.6.1 \
 		crossbeam-utils-0.2.2 \
 		crossbeam-utils-0.5.0 \
+		crossbeam-utils-0.6.1 \
+		csv-1.0.2 \
+		csv-core-0.1.4 \
 		ctrlc-3.1.1 \
-		dbghelp-sys-0.2.0 \
-		deflate-0.7.18 \
+		deflate-0.7.19 \
+		deunicode-0.4.3 \
+		digest-0.7.6 \
 		dtoa-0.4.3 \
 		either-1.5.0 \
-		elasticlunr-rs-2.3.3 \
+		elasticlunr-rs-2.3.4 \
 		encoding-0.2.33 \
 		encoding-index-japanese-1.20141219.5 \
 		encoding-index-korean-1.20141219.5 \
@@ -66,14 +74,14 @@ CARGO_CRATES=	actix-0.7.4 \
 		encoding-index-singlebyte-1.20141219.5 \
 		encoding-index-tradchinese-1.20141219.5 \
 		encoding_index_tests-0.1.4 \
-		encoding_rs-0.8.6 \
-		error-chain-0.1.12 \
+		encoding_rs-0.8.11 \
 		error-chain-0.12.0 \
 		error-chain-0.8.1 \
-		failure-0.1.2 \
-		failure_derive-0.1.2 \
-		filetime-0.2.1 \
-		flate2-1.0.2 \
+		failure-0.1.3 \
+		failure_derive-0.1.3 \
+		fake-simd-0.1.2 \
+		filetime-0.2.4 \
+		flate2-1.0.4 \
 		fnv-1.0.6 \
 		foreign-types-0.3.2 \
 		foreign-types-shared-0.1.1 \
@@ -83,177 +91,180 @@ CARGO_CRATES=	actix-0.7.4 \
 		fuchsia-zircon-0.3.3 \
 		fuchsia-zircon-sys-0.3.3 \
 		futf-0.1.4 \
-		futures-0.1.23 \
+		futures-0.1.25 \
 		futures-cpupool-0.1.8 \
+		generic-array-0.9.0 \
 		getopts-0.2.18 \
-		gif-0.10.0 \
+		gif-0.10.1 \
 		glob-0.2.11 \
-		globset-0.4.1 \
-		h2-0.1.12 \
+		globset-0.4.2 \
+		h2-0.1.13 \
+		heck-0.3.0 \
 		hostname-0.1.5 \
-		html5ever-0.22.3 \
-		htmlescape-0.3.1 \
-		http-0.1.10 \
-		httparse-1.3.2 \
+		html5ever-0.22.5 \
+		http-0.1.13 \
+		httparse-1.3.3 \
 		humansize-1.1.0 \
-		hyper-0.11.27 \
-		hyper-tls-0.1.4 \
+		humantime-1.1.1 \
+		hyper-0.12.14 \
+		hyper-tls-0.3.1 \
 		idna-0.1.5 \
-		image-0.19.0 \
-		indexmap-1.0.1 \
+		image-0.20.1 \
+		indexmap-1.0.2 \
 		inflate-0.4.3 \
 		inotify-0.6.1 \
 		inotify-sys-0.1.3 \
 		iovec-0.1.2 \
 		ipconfig-0.1.7 \
-		itoa-0.4.2 \
+		itoa-0.4.3 \
 		jpeg-decoder-0.1.15 \
 		kernel32-sys-0.2.2 \
 		language-tags-0.2.2 \
-		lazy_static-0.2.11 \
-		lazy_static-1.1.0 \
-		lazycell-0.6.0 \
-		lazycell-1.0.0 \
+		lazy_static-1.2.0 \
+		lazycell-1.2.0 \
 		libc-0.2.43 \
-		libflate-0.1.16 \
+		libflate-0.1.18 \
 		linked-hash-map-0.4.2 \
 		linked-hash-map-0.5.1 \
-		lock_api-0.1.3 \
-		log-0.4.4 \
+		lock_api-0.1.4 \
+		log-0.4.6 \
 		lru-cache-0.1.1 \
 		lzw-0.10.0 \
 		mac-0.1.1 \
 		maplit-1.0.1 \
-		markup5ever-0.7.2 \
+		markup5ever-0.7.3 \
 		matches-0.1.8 \
-		memchr-2.0.2 \
+		memchr-2.1.1 \
 		memoffset-0.2.1 \
-		mime-0.3.9 \
+		mime-0.3.12 \
 		mime_guess-2.0.0-alpha.6 \
-		miniz-sys-0.1.10 \
-		mio-0.6.15 \
+		miniz-sys-0.1.11 \
+		miniz_oxide-0.2.0 \
+		miniz_oxide_c_api-0.2.0 \
+		mio-0.6.16 \
 		mio-extras-2.0.5 \
-		mio-uds-0.6.6 \
+		mio-uds-0.6.7 \
 		miow-0.2.1 \
-		native-tls-0.1.5 \
+		native-tls-0.2.2 \
 		net2-0.2.33 \
 		new_debug_unreachable-1.0.1 \
 		nix-0.11.0 \
-		nodrop-0.1.12 \
+		nodrop-0.1.13 \
 		notify-4.0.6 \
-		num-derive-0.2.2 \
+		num-derive-0.2.3 \
 		num-integer-0.1.39 \
 		num-iter-0.1.37 \
-		num-rational-0.1.42 \
-		num-traits-0.2.5 \
+		num-rational-0.2.1 \
+		num-traits-0.2.6 \
 		num_cpus-1.8.0 \
-		onig-3.2.2 \
-		onig_sys-68.2.0 \
-		openssl-0.9.24 \
-		openssl-sys-0.9.35 \
+		onig-4.2.1 \
+		onig_sys-69.0.0 \
+		openssl-0.10.15 \
+		openssl-probe-0.1.2 \
+		openssl-sys-0.9.39 \
 		owning_ref-0.3.3 \
 		parking_lot-0.6.4 \
-		parking_lot_core-0.3.0 \
+		parking_lot_core-0.3.1 \
 		percent-encoding-1.0.1 \
-		pest-1.0.6 \
-		pest_derive-1.0.8 \
+		pest-2.0.2 \
+		pest_derive-2.0.1 \
+		pest_generator-2.0.0 \
+		pest_meta-2.0.3 \
 		phf-0.7.23 \
 		phf_codegen-0.7.23 \
 		phf_generator-0.7.23 \
 		phf_shared-0.7.23 \
 		pkg-config-0.3.14 \
-		plist-0.2.4 \
+		plist-0.3.0 \
 		png-0.12.0 \
 		precomputed-hash-0.1.1 \
-		proc-macro2-0.3.8 \
-		proc-macro2-0.4.16 \
-		pulldown-cmark-0.1.2 \
+		proc-macro2-0.4.24 \
+		pulldown-cmark-0.2.0 \
 		quick-error-1.2.2 \
-		quote-0.3.15 \
-		quote-0.5.2 \
-		quote-0.6.8 \
+		quote-0.6.10 \
 		rand-0.4.3 \
 		rand-0.5.5 \
-		rand_core-0.2.1 \
-		rayon-1.0.2 \
+		rand_core-0.2.2 \
+		rand_core-0.3.0 \
+		rayon-1.0.3 \
 		rayon-core-1.4.1 \
-		redox_syscall-0.1.40 \
+		redox_syscall-0.1.42 \
 		redox_termios-0.1.1 \
-		regex-1.0.4 \
-		regex-syntax-0.4.2 \
-		regex-syntax-0.6.2 \
-		relay-0.1.1 \
+		regex-1.0.6 \
+		regex-syntax-0.6.3 \
 		remove_dir_all-0.5.1 \
-		reqwest-0.8.8 \
+		reqwest-0.9.5 \
 		resolv-conf-0.6.1 \
 		rust-stemmers-1.0.2 \
 		rustc-demangle-0.1.9 \
-		ryu-0.2.6 \
-		safemem-0.2.0 \
-		same-file-1.0.3 \
+		rustc_version-0.2.3 \
+		ryu-0.2.7 \
+		safemem-0.3.0 \
+		same-file-1.0.4 \
 		sass-rs-0.2.1 \
 		sass-sys-0.4.7 \
-		schannel-0.1.13 \
-		scoped-tls-0.1.2 \
+		schannel-0.1.14 \
 		scoped_threadpool-0.1.9 \
 		scopeguard-0.3.3 \
-		security-framework-0.1.16 \
-		security-framework-sys-0.1.16 \
-		serde-1.0.76 \
-		serde_derive-1.0.76 \
-		serde_json-1.0.26 \
+		security-framework-0.2.1 \
+		security-framework-sys-0.2.1 \
+		semver-0.9.0 \
+		semver-parser-0.7.0 \
+		serde-1.0.80 \
+		serde_derive-1.0.80 \
+		serde_json-1.0.33 \
 		serde_urlencoded-0.5.3 \
+		sha-1-0.7.0 \
 		sha1-0.6.0 \
+		signal-hook-0.1.6 \
 		siphasher-0.2.3 \
 		slab-0.4.1 \
-		slug-0.1.3 \
-		smallvec-0.6.5 \
+		slotmap-0.2.1 \
+		slug-0.1.4 \
+		smallvec-0.6.6 \
 		socket2-0.3.8 \
 		stable_deref_trait-1.1.1 \
 		string-0.1.1 \
 		string_cache-0.7.3 \
-		string_cache_codegen-0.4.1 \
+		string_cache_codegen-0.4.2 \
 		string_cache_shared-0.3.0 \
 		strsim-0.7.0 \
-		strum-0.9.0 \
-		strum_macros-0.9.1 \
-		syn-0.11.11 \
-		syn-0.13.11 \
+		strum-0.11.0 \
+		strum_macros-0.11.0 \
 		syn-0.14.9 \
-		synom-0.11.3 \
-		synstructure-0.9.0 \
-		syntect-2.1.0 \
-		tempdir-0.3.7 \
-		tempfile-3.0.3 \
+		syn-0.15.21 \
+		synstructure-0.10.1 \
+		syntect-3.0.2 \
+		tempfile-3.0.4 \
 		tendril-0.4.0 \
-		tera-0.11.14 \
-		term-0.4.6 \
-		term-painter-0.2.4 \
+		tera-0.11.20 \
+		termcolor-1.0.4 \
 		termion-1.5.1 \
 		textwrap-0.10.0 \
 		thread_local-0.3.6 \
+		tiff-0.2.1 \
 		time-0.1.40 \
-		tokio-0.1.8 \
-		tokio-codec-0.1.0 \
-		tokio-core-0.1.17 \
-		tokio-current-thread-0.1.1 \
-		tokio-executor-0.1.4 \
-		tokio-fs-0.1.3 \
-		tokio-io-0.1.8 \
-		tokio-reactor-0.1.5 \
-		tokio-service-0.1.0 \
-		tokio-signal-0.2.5 \
-		tokio-tcp-0.1.1 \
-		tokio-threadpool-0.1.6 \
-		tokio-timer-0.2.6 \
-		tokio-tls-0.1.4 \
+		tokio-0.1.11 \
+		tokio-codec-0.1.1 \
+		tokio-current-thread-0.1.3 \
+		tokio-executor-0.1.5 \
+		tokio-fs-0.1.4 \
+		tokio-io-0.1.10 \
+		tokio-reactor-0.1.6 \
+		tokio-signal-0.2.6 \
+		tokio-tcp-0.1.2 \
+		tokio-threadpool-0.1.8 \
+		tokio-timer-0.2.7 \
 		tokio-udp-0.1.2 \
-		tokio-uds-0.2.1 \
-		toml-0.4.6 \
-		trust-dns-proto-0.4.0 \
-		trust-dns-resolver-0.9.1 \
-		try-lock-0.1.0 \
-		ucd-util-0.1.1 \
+		tokio-uds-0.2.3 \
+		toml-0.4.8 \
+		tower-service-0.1.0 \
+		trust-dns-proto-0.5.0 \
+		trust-dns-resolver-0.10.0 \
+		try-lock-0.2.2 \
+		typenum-1.10.0 \
+		ucd-trie-0.1.1 \
+		ucd-util-0.1.3 \
 		unic-char-property-0.7.0 \
 		unic-char-range-0.7.0 \
 		unic-common-0.7.0 \
@@ -261,42 +272,41 @@ CARGO_CRATES=	actix-0.7.4 \
 		unic-ucd-segment-0.7.0 \
 		unic-ucd-version-0.7.0 \
 		unicase-1.4.2 \
-		unicase-2.1.0 \
+		unicase-2.2.0 \
 		unicode-bidi-0.3.4 \
 		unicode-normalization-0.1.7 \
 		unicode-segmentation-1.2.1 \
 		unicode-width-0.1.5 \
-		unicode-xid-0.0.4 \
 		unicode-xid-0.1.0 \
-		unidecode-0.3.0 \
 		unreachable-1.0.0 \
-		url-1.7.1 \
+		url-1.7.2 \
 		utf-8-0.7.4 \
-		utf8-ranges-1.0.1 \
-		uuid-0.6.5 \
+		utf8-ranges-1.0.2 \
+		uuid-0.7.1 \
 		vcpkg-0.2.6 \
 		vec_map-0.8.1 \
-		version_check-0.1.4 \
+		version_check-0.1.5 \
 		void-1.0.2 \
-		walkdir-2.2.5 \
-		want-0.0.4 \
+		walkdir-2.2.7 \
+		want-0.0.6 \
 		widestring-0.2.2 \
 		winapi-0.2.8 \
-		winapi-0.3.5 \
+		winapi-0.3.6 \
 		winapi-build-0.1.1 \
 		winapi-i686-pc-windows-gnu-0.4.0 \
 		winapi-util-0.1.1 \
 		winapi-x86_64-pc-windows-gnu-0.4.0 \
+		wincolor-1.0.1 \
 		winreg-0.5.1 \
 		winutil-0.1.1 \
-		ws-0.7.8 \
+		ws-0.7.9 \
 		ws2_32-sys-0.2.1 \
 		xml-rs-0.7.0 \
-		yaml-rust-0.4.0
+		yaml-rust-0.4.2
 
-PLIST_FILES=	bin/gutenberg
+PLIST_FILES=	bin/zola
 
 post-install:
-	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/gutenberg
+	@${STRIP_CMD} ${STAGEDIR}${PREFIX}/bin/zola
 
 .include <bsd.port.mk>
